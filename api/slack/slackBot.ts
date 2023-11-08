@@ -26,6 +26,11 @@ class SlackBot{
             await say(`Hello, <@${message.user}>`)
         }
     });
+   } 
+
+   processMessage(message: string): string{
+    const response: string = message;
+    return response;
    }
 
     async start(){
