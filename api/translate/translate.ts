@@ -25,8 +25,9 @@ class Translate{
         }
     }
 
-    fetchApiData = (text: string): string =>{
+    fetchApiData = (text: any): string =>{
         const apiUri: string = this.uri + "?text=" + text + "&source=" + this.source + "&target=" + this.target;
+        console.log(apiUri);
         return apiUri;
     }
 }
