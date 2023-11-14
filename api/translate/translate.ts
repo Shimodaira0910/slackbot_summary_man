@@ -13,7 +13,7 @@ class Translate{
         const constInstance = new Constants();
         this.source = constInstance.source;
         this.target = constInstance.target;
-        this.resultText = 'このメッセージが出るのはおかしいヨ';
+        this.resultText = constInstance.defaultErrorMessage;
 
         const env = load({
             TRANSLATE_API_URI: String,
