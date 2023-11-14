@@ -1,8 +1,7 @@
 class Constants{
     source: string = "ja";
     target: string = "en";
-
-    errorMessageNotReceived: string = "メッセージが受け取れませんでした。" 
+    defaultErrorMessage: string = "このメッセージが出るのはおかしいヨ";
 }
 
 export default Constants;
