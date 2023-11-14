@@ -1,6 +1,7 @@
 import { App } from '@slack/bolt'
 import { load } from 'ts-dotenv'
 import Translate from './api/translate/translate'
+import { promises } from 'dns';
 
 const env = load({
     SLACK_BOT_TOKEN: String,
@@ -20,9 +21,8 @@ const tr = new Translate();
 app.message('', async ({ message, say }) => {
     if (!message.subtype) {
       const text = message.text;
-      console.log(text);
-      tr.fetchApiData(text);
-      await say(`Hello, <@${message.user}>. You said: ${message.text}`);
+      const botMessage: string = await tr.fetchApiData(text);
+      await say(botMessage);
     }
 });
 
