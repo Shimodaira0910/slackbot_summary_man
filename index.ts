@@ -1,7 +1,6 @@
 import { App } from '@slack/bolt'
 import { load } from 'ts-dotenv'
 import Translate from './api/translate/translate'
-import { promises } from 'dns';
 
 const env = load({
     SLACK_BOT_TOKEN: String,
@@ -15,7 +14,6 @@ const app = new App({
 })
 
 const port = env.PORT;
-
 const tr = new Translate();
 
 app.message('', async ({ message, say }) => {
@@ -28,5 +26,5 @@ app.message('', async ({ message, say }) => {
 
 (async () => {
     await app.start(port || 3000);
-    console.log('⚡️ Bolt app is running!');
-  })();
+    console.log('⚡️ Bolt app is running!!!!');
+})();
