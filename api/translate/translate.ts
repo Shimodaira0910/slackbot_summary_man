@@ -45,9 +45,14 @@ class Translate{
             }
             return this.resultText;
 
-        } catch(error: any) { 
-            throw new Error(`エラーが発生しました: ${error.message}`);
-        }   
+        } catch(error: any) {
+            if (error instanceof Error){
+                throw new Error(`エラーが発生しました: ${error.message}`);
+            } else {
+                throw new Error('未知のエラーが発生しました。');
+            }
+            
+        } 
     }
 }
 
