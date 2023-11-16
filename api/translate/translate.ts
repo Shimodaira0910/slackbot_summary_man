@@ -34,24 +34,19 @@ class Translate{
         try{
             const response:Response = await fetch(apiUri, this.requestOptions);
             if (!response.ok) {
-                console.error(response.status);
-                this.resultText = 'APIリクエストがうまくいかなかったみたいです...。';
-                return this.resultText;  
+                throw new Error(`APIリクエストが失敗しました。ステータスコード: ${response.status}`);
             }
 
             const data = await response.json();
             this.resultText = data.text;
 
             if(text === ''){
-                console.error(error);
-                this.resultText = 'テキストが返ってきませんでした...。';
+                throw new Error('テキストが返ってきませんでした。');
             }
             return this.resultText;
 
         } catch(error) { 
-            console.error(error);
-            this.resultText = 'fetchに失敗しました!!';
-            return this.resultText;
+            throw new Error(`エラーが発生しました: ${error}`);
         }   
     }
 }
