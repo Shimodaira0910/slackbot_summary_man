@@ -40,13 +40,13 @@ class Translate{
             const data = await response.json();
             this.resultText = data.text;
 
-            if(text === ''){
+            if(this.resultText === ''){
                 throw new Error('テキストが返ってきませんでした。');
             }
             return this.resultText;
 
-        } catch(error) { 
-            throw new Error(`エラーが発生しました: ${error}`);
+        } catch(error: any) { 
+            throw new Error(`エラーが発生しました: ${error.message}`);
         }   
     }
 }
