@@ -1,6 +1,6 @@
 import { App } from '@slack/bolt'
 import { load } from 'ts-dotenv'
-import Translate from './api/translate/translate'
+import Translate from '../api/translate/translate'
 
 const env = load({
     SLACK_BOT_TOKEN: String,
