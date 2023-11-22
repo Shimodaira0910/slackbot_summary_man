@@ -1,6 +1,7 @@
 import { App } from '@slack/bolt'
 import { load } from 'ts-dotenv'
 import Translate from '../api/translate/translate'
+import AIAgent from '../api/client/openai'
 
 const env = load({
     SLACK_BOT_TOKEN: String,
@@ -15,11 +16,13 @@ const app = new App({
 
 const port = env.PORT;
 const tr = new Translate();
+const ai = new AIAgent();
 
 app.message('', async ({ message, say }) => {
     if (!message.subtype) {
       const text = message.text;
       const botMessage: string = await tr.fetchApiData(text);
+      const test = await ai.askAi(botMessage); 
       await say(botMessage);
     }
 });
